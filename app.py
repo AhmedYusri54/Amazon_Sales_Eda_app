@@ -12,6 +12,7 @@ data_set_url = "https://www.kaggle.com/datasets/karkavelrajaj/amazon-sales-datas
 st.write("Dataset link in Kaggle: [Amazon Sales dataset](%s)" % data_set_url)
 st.sidebar.header("Navigation")
 st.sidebar.markdown("Created by [Ahmed Yusri](https://www.linkedin.com/in/ahmed-yusri-499a67313)")
+st.sidebar.image("amazon_img.png")
 # Create an set of options for user to select
 sidebar_option = st.sidebar.radio("Choose an Option:", ["Data Overview", "EDA", "Visualizations"])
 
@@ -22,9 +23,12 @@ if sidebar_option == "Data Overview":
     st.write(amazon_df.head())
     st.markdown("### Dataset Summary")
     st.write(amazon_df.describe())
-    st.markdown("### Interactive Columns datatypes")
-    selected_col = st.sidebar.selectbox("Select a column", amazon_df.columns)
-    st.write(f"Datatype of {selected_col}: {amazon_df[selected_col].dtype}")
+    st.markdown("### Data Quality")
+    st.write("See if there is an missing values")
+    st.write(amazon_df.isnull().sum())
+    # st.markdown("### Interactive Columns datatypes")
+    # selected_col = st.sidebar.selectbox("Select a column", amazon_df.columns)
+    # st.write(f"Datatype of {selected_col}: {amazon_df[selected_col].dtype}")
    
 # 2. EDA part
 elif sidebar_option == "EDA":
