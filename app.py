@@ -14,7 +14,7 @@ st.sidebar.header("Navigation")
 st.sidebar.markdown("Created by [Ahmed Yusri](https://www.linkedin.com/in/ahmed-yusri-499a67313)")
 st.sidebar.image("amazon_img.png")
 # Create an set of options for user to select
-sidebar_option = st.sidebar.radio("Choose an Option:", ["Data Overview", "EDA", "Visualizations"])
+sidebar_option = st.sidebar.radio("Choose an Option:", ["Data Overview", "EDA", "Visualizations", "Insights"])
 
 # 1. Data Overview part 
 if sidebar_option == "Data Overview":
@@ -42,18 +42,21 @@ elif sidebar_option == "EDA":
          st.markdown("### Rating Distribution")
          fig1 = px.histogram(amazon_df, x='rating', nbins=20, title="Distribution of Rating")
          st.plotly_chart(fig1)
+         st.write("After seeing the distribution of rating column i can say the it is a normal distribution plot.") 
+         st.write("So we can no if there any NaN values in the column we can fill it using any method (mean, median, mode).")
          # 1.2 Plot a histogram of the actual price column
          st.markdown("### Actual price Distribution")
          fig2 = px.histogram(amazon_df, x='actual_price', nbins=20, title="Distribution of Actual price")
          st.plotly_chart(fig2)
-         
+         st.write("As i see this plot it is a Right Skwed distribution plot")
+         st.write("So the mean value is higher than median values so the best way to fill NaN values here by using `mean()` function") 
      elif analysis_type_option == "Divariant analysis":
          st.subheader("Divariant analysis")
          # 1.1 See the corrlation between actual_price and rating columns
          st.markdown("### Corrlation between actual price and rating columns")
          fig3 = px.scatter(x='rating',y='actual_price', data_frame=amazon_df); 
          st.plotly_chart(fig3) 
-          
+         st.write("As i see this in this plot the corrlation between actual_price and rating columns is low.") 
          # 1.2 See the corrlation between discount_price and actual_price columns
          fig4 = px.scatter(x='actual_price',
                            y='discounted_price', 
@@ -75,6 +78,8 @@ elif sidebar_option == "EDA":
              labels=dict(x="Features", y="Features", color="Correlation")
              )
          st.plotly_chart(fig)
+         st.write("As we see in the previous scatter plot the correlation between actual price and discount price is: '0.96' so close to 1")
+         st.write("Also note that the correlation between actual price and rating is '0.12' is very low compared discount price.")
 # 3. Visualizations part
 elif sidebar_option == "Visualizations":
     st.header("Data Visualizations")
@@ -93,6 +98,7 @@ elif sidebar_option == "Visualizations":
             )
     fig.update_layout(width=500, height=500)
     st.plotly_chart(fig)
+    st.write("This is a pie chart showing the Top 10 most Sold Products, See the Electronics category is in top order.")
     # Create the bar plot using Plotly to see the most expensive products
     top_5_expensive = amazon_df.sort_values('discounted_price', ascending=False).head(5)    
     top_5_expensive['short_product_name'] = top_5_expensive['product_name'].apply(lambda x: x[:20] + '...' if len(x) > 20 else x)
@@ -114,7 +120,7 @@ elif sidebar_option == "Visualizations":
     yaxis={'categoryorder':'total ascending'} # Orders bars from lowest to highest by discounted price
     )
     st.plotly_chart(fig1) 
-    
+    st.write("See the Top 5 Most Expensive Products After Discount is almost the Televisions.")
     # Create the bar plot using Plotly to see the most cheapest  products
     top_5_cheapest = amazon_df.sort_values('discounted_price').head(5)
 
@@ -138,8 +144,12 @@ elif sidebar_option == "Visualizations":
     yaxis={'categoryorder':'total ascending'} # Orders bars from lowest to highest by discounted price
     )
     st.plotly_chart(fig3)
+    st.write("See the Top 5 Most cheapest Products After Discount is almost USB cables so it's make senes that they are the most sold porducts.")
 
-
+elif sidebar_option == "Insights":
+    st.header("My Insights of this dataset")
+    st.write("After making some univariate analysis i see that most of the columns is Right skwed distributions the majority of the data is located on the left side of the graph, and the mean, or average, is greater than the median.")
+    st.write("The company most focus on selling the USB Cables because thay are cheap and most sold porducts, Such as selling a different types of them and make more discouts in Televisions because they are the most Expensive Products and not sold alot.")
 # Footer
 st.sidebar.markdown("***")
 st.sidebar.write("End of App")
