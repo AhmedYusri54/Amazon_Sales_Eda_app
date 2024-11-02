@@ -11,7 +11,7 @@ st.write("Today i will make a Simple EDA Application for Amazon Sales datasets."
 data_set_url = "https://www.kaggle.com/datasets/karkavelrajaj/amazon-sales-dataset"
 st.write("Dataset link in Kaggle: [Amazon Sales dataset](%s)" % data_set_url)
 st.sidebar.header("Navigation")
-st.sidebar.markdown("Created by [Ahmed Yusri](www.linkedin.com/in/ahmed-yusri-499a67313)")
+st.sidebar.markdown("Created by [Ahmed Yusri](https://www.linkedin.com/in/ahmed-yusri-499a67313)")
 # Create an set of options for user to select
 sidebar_option = st.sidebar.radio("Choose an Option:", ["Data Overview", "EDA", "Visualizations"])
 
