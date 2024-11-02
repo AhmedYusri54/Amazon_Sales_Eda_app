@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 # Load the dataFrame from data folder 
-amazon_df = pd.read_csv("data/final_amazon_data.csv")
+amazon_df = pd.read_csv("final_amazon_data.csv")
 # Drop the Unnamed column from the dataFrame
 amazon_df.drop(columns="Unnamed: 0", inplace=True)
 # Set up the Streamlit app layout
