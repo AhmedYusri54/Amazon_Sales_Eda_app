@@ -50,7 +50,7 @@ elif sidebar_option == "EDA":
          st.plotly_chart(fig2)
          st.write("As i see this plot it is a Right Skwed distribution plot")
          st.write("So the mean value is higher than median values so the best way to fill NaN values here by using `mean()` function") 
-     elif analysis_type_option == "Divariant analysis":
+     elif analysis_type_option == "Bivariant analysis":
          st.subheader("Bivariant analysis")
          # 1.1 See the corrlation between actual_price and rating columns
          st.markdown("### Corrlation between actual price and rating columns")
