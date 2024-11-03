@@ -35,7 +35,7 @@ elif sidebar_option == "EDA":
      st.header("Exploratory Data Analysis")
      
      # 1. Put a select radio to choose to see a uni or bivariant analysis
-     analysis_type_option = st.sidebar.radio("Choose type of Analysis:", ["Univariant analysis", "Divariant analysis"])
+     analysis_type_option = st.sidebar.radio("Choose type of Analysis:", ["Univariant analysis", "Bivariant analysis"])
      if analysis_type_option == "Univariant analysis":
          st.subheader("Univariant analysis")
          # 1.1 Plot a histogram of the rating column
@@ -51,7 +51,7 @@ elif sidebar_option == "EDA":
          st.write("As i see this plot it is a Right Skwed distribution plot")
          st.write("So the mean value is higher than median values so the best way to fill NaN values here by using `mean()` function") 
      elif analysis_type_option == "Divariant analysis":
-         st.subheader("Divariant analysis")
+         st.subheader("Bivariant analysis")
          # 1.1 See the corrlation between actual_price and rating columns
          st.markdown("### Corrlation between actual price and rating columns")
          fig3 = px.scatter(x='rating',y='actual_price', data_frame=amazon_df); 
